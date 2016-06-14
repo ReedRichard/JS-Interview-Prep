@@ -8,7 +8,7 @@ requirejs.config({
     shim: {
         'QUnit': {
             exports: 'QUnit',
-            init: function() {
+            init: function () {
                 QUnit.config.autoload = false;
                 QUnit.config.autostart = false;
             }
@@ -17,11 +17,30 @@ requirejs.config({
 });
 
 
-require(['QUnit', '../tests/linkedListTests', 'linkedList'],
-    function (QUnit, linkedListTests, linkedList) {
+require(['QUnit',
+    '../tests/linkedListTests',
+    '../tests/permutationTests',
+    '../tests/recursionTests',
+    '../tests/trickyTests',
+    '../tests/eulerTests',
+    'linkedList',
+    'permutations',
+    'recursionPractice',
+    'tricky',
+    'projectEuler'
+     ],
 
-    linkedListTests.run();
+    function (QUnit, linkedListTests, permutationTests,
+              recursionTests, trickyTests, eulerTests,
 
-    QUnit.load();
-    QUnit.start();
-});
+              linkedList, permutations, recursions, tricky, projectEuler) {
+
+        linkedListTests.run();
+        permutationTests.run();
+        recursionTests.run();
+        trickyTests.run();
+        eulerTests.run();
+
+        QUnit.load();
+        QUnit.start();
+    });

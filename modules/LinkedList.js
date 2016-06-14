@@ -22,6 +22,18 @@ define([], function () {
             }
         },
 
+        clear: function() {
+            this.head = null;
+        },
+
+        fromArray: function(arr) {
+            this.clear();
+            var self = this;
+            arr.forEach(function(val){
+                self.add(val);
+            });
+        },
+
         toArray: function() {
             var result = [];
             var current = this.head;
@@ -30,6 +42,23 @@ define([], function () {
                 current = current.next;
             }
             return result;
+        },
+
+        removeThirdFromLast : function() {
+            // return null if there is not third to last
+            var current = this.head;
+            if (current === null || current.next === null || current.next.next === null){
+                return null;
+            }
+
+            var threeAhead = current.next.next.next;
+
+            while(threeAhead.next !== null){
+                threeAhead = threeAhead.next;
+                current = current.next;
+            }
+
+            current.next = current.next.next;
         }
     }
 
